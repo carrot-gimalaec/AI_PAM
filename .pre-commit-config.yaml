@@ -1,0 +1,53 @@
+repos:
+  - repo: https://github.com/asottile/reorder-python-imports
+    rev: v3.14.0
+    hooks:
+      - id: reorder-python-imports
+        args: [ --py312-plus, --application-directories=. ]
+        types_or: [ python, pyi ]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: check-added-large-files
+        args: [ '--maxkb=204800' ]
+      - id: detect-private-key
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.19.1
+    hooks:
+      - id: pyupgrade
+        args: [ --py312-plus ]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.10
+    hooks:
+      - id: ruff
+        types_or: [ python, pyi ]
+        args: [ --fix ]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.10
+    hooks:
+      - id: ruff-format
+        args: [ --diff ]
+        exclude: ^dataset/
+        types_or: [ python, pyi ]
+
+  - repo: https://github.com/hadolint/hadolint
+    rev: v2.13.1-beta
+    hooks:
+      - id: hadolint-docker
+        types_or: [ dockerfile ]
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.6.5
+    hooks:
+      - id: uv-lock
+        name: uv lock
+      - id: uv-export
+
+#-   repo: https://github.com/mrtazz/checkmake.git
+#    rev: 0.2.2
+#    hooks:
+#    -   id: checkmake
