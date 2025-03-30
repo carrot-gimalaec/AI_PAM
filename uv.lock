@@ -26,6 +26,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "accelerate" },
+    { name = "logbook" },
     { name = "torch" },
     { name = "transformers" },
 ]
@@ -34,7 +35,6 @@ dependencies = [
 research = [
     { name = "ipywidgets" },
     { name = "jupyter" },
-    { name = "notebook" },
 ]
 vc-utils = [
     { name = "pre-commit" },
@@ -43,6 +43,7 @@ vc-utils = [
 [package.metadata]
 requires-dist = [
     { name = "accelerate", specifier = ">=1.5.2" },
+    { name = "logbook", specifier = ">=1.8.1" },
     { name = "torch", specifier = ">=2.6.0" },
     { name = "transformers", specifier = ">=4.50.3" },
 ]
@@ -51,7 +52,6 @@ requires-dist = [
 research = [
     { name = "ipywidgets", specifier = ">=8.1.5" },
     { name = "jupyter", specifier = ">=1.1.1" },
-    { name = "notebook", specifier = ">=7.3.3" },
 ]
 vc-utils = [{ name = "pre-commit", specifier = ">=4.2.0" }]
 
@@ -823,6 +823,28 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/59/73/fa26bbb747a9ea4fca6b01453aa22990d52ab62dd61384f1ac0dc9d4e7ba/jupyterlab_widgets-3.0.13.tar.gz", hash = "sha256:a2966d385328c1942b683a8cd96b89b8dd82c8b8f81dda902bb2bc06d46f5bed", size = 203556 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/a9/93/858e87edc634d628e5d752ba944c2833133a28fa87bb093e6832ced36a3e/jupyterlab_widgets-3.0.13-py3-none-any.whl", hash = "sha256:e3cda2c233ce144192f1e29914ad522b2f4c40e77214b0cc97377ca3d323db54", size = 214392 },
+]
+
+[[package]]
+name = "logbook"
+version = "1.8.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/79/d1/fb4f16b0eeadb557c1273807245df9dee0fc5f3b7f8aead83600085030c8/logbook-1.8.1.tar.gz", hash = "sha256:221e6f884f035fffd77935802ab47dc0a3aa7c833010cd7b51354649a7eb462d", size = 368031 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/41/6e/9660526f8ff3f7191967c0864e4992edfff13d0c4b8c4da7e0fdb733bd86/logbook-1.8.1-cp312-cp312-macosx_10_13_universal2.whl", hash = "sha256:cae13a3f616027c558b76e34039c262d117ad4cb9064506ec8f29466eb03e76e", size = 198857 },
+    { url = "https://files.pythonhosted.org/packages/9d/ff/69a9ea755dacda0a675e32672961ca2946e5964b4d1afcdc1b6251e5e132/logbook-1.8.1-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:c88eec448e23e79b889dc1548a767fecf0b0f37f5270c753fee113f2af2bb2a8", size = 133961 },
+    { url = "https://files.pythonhosted.org/packages/57/61/bf4819aa3bdaddb36fe09af4522cb7ea7302dd5cf0c27921b8be824514d3/logbook-1.8.1-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:db3e6fa563f1ddc711cac8af2d3fe2a9301dd27e723afe691528161e89c0756a", size = 129230 },
+    { url = "https://files.pythonhosted.org/packages/db/d6/420016c985c23e9b9fe5f7ed72676afd0f904c426d118be34fc7d4d2489c/logbook-1.8.1-cp312-cp312-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:27aefba2d67b9c3d752d3b03db24d5747a483f8585312d8fc534447c1a94f9e5", size = 518473 },
+    { url = "https://files.pythonhosted.org/packages/d6/45/ccd8615580389669b8472456a8bc1164f36f2f1f2d1e63d6d56d518e6f4a/logbook-1.8.1-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:8f2bc17673831e5efd9f232317950b360f04d6c8c737f6cac2a239428bedefe0", size = 512155 },
+    { url = "https://files.pythonhosted.org/packages/86/4c/7a10a355486e721837fe9c74dd0c646c95082fa8373f71b07e496e55da24/logbook-1.8.1-cp312-cp312-win32.whl", hash = "sha256:3d206ceb1f505518ae87daa9313d67264013075fcfb354fcdfddded3be0baa2b", size = 115942 },
+    { url = "https://files.pythonhosted.org/packages/2c/4d/ca07c48f83ea09482cb67d2f2a0fb71e6d375b5244025088bcbe091ce1d0/logbook-1.8.1-cp312-cp312-win_amd64.whl", hash = "sha256:e35c6122a1decaf1c9e9cb0e12b8fada82c5f2bc84dee99cb83ba024998b8a2e", size = 124365 },
+    { url = "https://files.pythonhosted.org/packages/ec/95/6c0455383f400800c498a5d2993d4691b3b7a6066a8cfc5c5f6953064a4c/logbook-1.8.1-cp313-cp313-macosx_10_13_universal2.whl", hash = "sha256:d094397b624aa70656a8575230fd9b8373dd9c978dfc912691e5227cb3c804fc", size = 195645 },
+    { url = "https://files.pythonhosted.org/packages/8c/2a/c328c7a27206ec1d9940120a9a476df5f488dfa9aa95c8a0474b8f3a2277/logbook-1.8.1-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:a4d30983ac1dce2f09d9acbf86ecf78696158148354162faff26c575b3a52ec7", size = 132123 },
+    { url = "https://files.pythonhosted.org/packages/6e/f5/7c33fa19f04525fc6e287ef80b220c5bb3d3d62f6c40ce055c43c45be770/logbook-1.8.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:a6c0d52293645aa46b2edfe7da8d61cf7839955d4ccf073c615972b55a44cefc", size = 127914 },
+    { url = "https://files.pythonhosted.org/packages/fa/c2/0d65ade0c7962f87b28ac802dbd9ad2b58e2fdf10e14d3dd8279d436026d/logbook-1.8.1-cp313-cp313-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:95e7a7ba8610f0fd49e04e8cd2ac986d9e27cf1d232633d46563de1e0aeadacb", size = 515935 },
+    { url = "https://files.pythonhosted.org/packages/51/c7/6f16628748a96cabdbe5825bf1fed4ec7e83ab2e730008561ed85ca079e2/logbook-1.8.1-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:2ee8107845319fc0f974a86af8b029b555a1488616c979ba42245c18278178af", size = 512147 },
+    { url = "https://files.pythonhosted.org/packages/b4/3a/e2ee5456154ad3bfc91c4bb25c8ea2f8c99ce6056e49176289d7f4ea1562/logbook-1.8.1-cp313-cp313-win32.whl", hash = "sha256:db7213329c72f85d78d3c806d30c31b4e76c9da72eea98be4f986f581fd18ed9", size = 116005 },
+    { url = "https://files.pythonhosted.org/packages/19/22/aae1b4e6ba5aa27b368dd29870f92d1f0594277b33181aeddd8ccd895a2b/logbook-1.8.1-cp313-cp313-win_amd64.whl", hash = "sha256:084265d5ccf48c9259b49477bbf30913f405c2812b96f739d5feebea828cc275", size = 124448 },
 ]
 
 [[package]]

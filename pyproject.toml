@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12.9"
 dependencies = [
     "accelerate>=1.5.2",
+    "logbook>=1.8.1",
     "torch>=2.6.0",
     "transformers>=4.50.3",
 ]
@@ -14,7 +15,6 @@ dependencies = [
 research = [
     "ipywidgets>=8.1.5",
     "jupyter>=1.1.1",
-    "notebook>=7.3.3",
 ]
 vc-utils = [
     "pre-commit>=4.2.0",
