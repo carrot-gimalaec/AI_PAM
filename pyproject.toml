@@ -1,0 +1,21 @@
+[project]
+name = "ai-pam"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12.9"
+dependencies = [
+    "accelerate>=1.5.2",
+    "torch>=2.6.0",
+    "transformers>=4.50.3",
+]
+
+[dependency-groups]
+research = [
+    "ipywidgets>=8.1.5",
+    "jupyter>=1.1.1",
+    "notebook>=7.3.3",
+]
+vc-utils = [
+    "pre-commit>=4.2.0",
+]
