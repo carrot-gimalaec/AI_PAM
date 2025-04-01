@@ -13,8 +13,13 @@ dependencies = [
 
 [dependency-groups]
 research = [
+    "httpx>=0.28.1",
     "ipywidgets>=8.1.5",
     "jupyter>=1.1.1",
+    "openai>=1.70.0",
+    "python-dotenv>=1.1.0",
+    "tenacity>=9.0.0",
+    "tqdm>=4.67.1",
 ]
 vc-utils = [
     "pre-commit>=4.2.0",
