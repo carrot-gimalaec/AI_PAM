@@ -1,3 +1,4 @@
-from .zeroshot import ZeroShotClassifier
+from .zeroshot import ZeroShotClassifierWithProbs
+from .zeroshot import ZeroShotClassifierWithTextOutput
 
-__all__ = ["ZeroShotClassifier"]
+__all__ = ["ZeroShotClassifierWithProbs", "ZeroShotClassifierWithTextOutput"]
