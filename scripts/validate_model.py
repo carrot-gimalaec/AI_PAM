@@ -22,7 +22,7 @@ DATA_FOLDER = BASE_DIR / "data"
     help="Device to use for inference",
 )
 def main(model_name: str, device: str, input_file: str):
-    input_file = DATA_FOLDER / input_file
+    input_file = Path(input_file)
 
     if not input_file.exists():
         raise FileNotFoundError(f"Input file {input_file} does not exist.")
@@ -57,13 +57,8 @@ def main(model_name: str, device: str, input_file: str):
         row["predicted_prob"] = pred_prob
         predictions.append(row)
 
-    output_file = DATA_FOLDER / "predictions.json"
-    if output_file.exists():
-        with open(output_file, "r") as f:
-            existing_predictions = json.load(f)
-        existing_predictions.extend(predictions)
-        predictions = existing_predictions
-    with open(DATA_FOLDER / "predictions.json", "w") as f:
+    output_file = input_file.parent / "predictions.json"
+    with open(output_file, "w") as f:
         json.dump(predictions, f, indent=4)
     return
 
