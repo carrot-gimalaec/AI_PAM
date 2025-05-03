@@ -14,14 +14,22 @@ DATA_FOLDER = BASE_DIR / "data"
 @click.option(
     "--model-name", default="Qwen/Qwen3-1.7B", help="Model name, e.g., Qwen/Qwen3-1.7B"
 )
+@click.option("--input-file", help="Path to the input JSON file")
 @click.option(
     "--device",
     type=click.Choice(["cuda", "cpu"]),
     default="cuda",
     help="Device to use for inference",
 )
-def main(model_name: str, device: str):
-    df = pl.read_json(DATA_FOLDER / "generated_data.json")
+def main(model_name: str, device: str, input_file: str):
+    input_file = DATA_FOLDER / input_file
+
+    if not input_file.exists():
+        raise FileNotFoundError(f"Input file {input_file} does not exist.")
+    if input_file.suffix != ".json":
+        raise ValueError(f"Input file {input_file} must be a JSON file.")
+
+    df = pl.read_json(input_file)
     zero_shot_classifier = ZeroShotClassifierWithProbs(
         system_prompt=get_system_prompt(),
         model_name=model_name,
