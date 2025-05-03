@@ -12,7 +12,9 @@ DATA_FOLDER = BASE_DIR / "data"
 
 
 @click.command()
-@click.option("--model_name", default="Qwen/Qwen3-1.7B", help="Model name")
+@click.option(
+    "--model_name", default="Qwen/Qwen3-1.7B", help="Model name, e.g., Qwen/Qwen3-1.7B"
+)
 @click.option(
     "--device",
     type=click.Choice(["cuda", "cpu"]),
