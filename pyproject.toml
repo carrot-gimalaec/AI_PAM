@@ -6,8 +6,16 @@ readme = "README.md"
 requires-python = ">=3.12.9"
 dependencies = [
     "accelerate>=1.5.2",
+    "autoawq>=0.2.7.post3",
+    "click>=8.1.8",
     "logbook>=1.8.1",
+    "matplotlib>=3.10.1",
+    "notebook>=7.4.1",
+    "plotly>=6.0.1",
+    "polars>=1.29.0",
+    "seaborn>=0.13.2",
     "torch>=2.6.0",
+    "torchmetrics>=1.7.1",
     "transformers>=4.50.3",
 ]
 
