@@ -2,7 +2,6 @@ from tqdm.auto import tqdm
 import polars as pl
 from pathlib import Path
 import json
-import torch
 import click
 from src.classifiers.zeroshot import ZeroShotClassifierWithProbs, get_system_prompt
 
@@ -13,7 +12,7 @@ DATA_FOLDER = BASE_DIR / "data"
 
 @click.command()
 @click.option(
-    "--model_name", default="Qwen/Qwen3-1.7B", help="Model name, e.g., Qwen/Qwen3-1.7B"
+    "--model-name", default="Qwen/Qwen3-1.7B", help="Model name, e.g., Qwen/Qwen3-1.7B"
 )
 @click.option(
     "--device",
