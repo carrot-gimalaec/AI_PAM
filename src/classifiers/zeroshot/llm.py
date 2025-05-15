@@ -117,7 +117,7 @@ class ZeroShotClassifierWithProbs(TokenGenerator):
             model_name,
             device,
         )
-        self.tokens_before_classification = [151668, 271, 151668, 271]
+        self.tokens_before_classification = [151667, 151668]
 
     @torch.inference_mode()
     def classify(
@@ -127,6 +127,7 @@ class ZeroShotClassifierWithProbs(TokenGenerator):
         do_normalization: bool = True,
         debug: bool = False,
         use_chat_template: bool = False,
+        max_new_tokens: int = 1024,
     ) -> float:
         torch.cuda.empty_cache()
         if isinstance(prompt, list | tuple):
@@ -146,7 +147,11 @@ class ZeroShotClassifierWithProbs(TokenGenerator):
 
         if use_chat_template:
             pos_prob, neg_prob, most_prob_token = self._classify_with_chat_template(
-                prompt, target_token_pos_id[0], target_token_neg_id[0], debug
+                prompt,
+                target_token_pos_id[0],
+                target_token_neg_id[0],
+                debug,
+                max_new_tokens,
             )
         else:
             pos_prob, neg_prob, most_prob_token = self._classify(
@@ -174,14 +179,14 @@ class ZeroShotClassifierWithProbs(TokenGenerator):
         pos_token_id: int,
         neg_token_id: int,
         debug: bool,
-        max_new_tokens: int = 20,
+        max_new_tokens: int,
     ) -> tuple[float, float, int]:
         chat = [
             {"role": "system", "content": self.system_prompt},
             {"role": "user", "content": prompt},
         ]
         tokenized_chat = self.tokenizer.apply_chat_template(
-            chat, return_tensors="pt", return_dict=True
+            chat, return_tensors="pt", return_dict=True, add_generation_prompt=True
         ).to(device=self.model.device)
 
         assistant_tokens = copy.deepcopy(self.tokens_before_classification)
@@ -194,13 +199,21 @@ class ZeroShotClassifierWithProbs(TokenGenerator):
             )
             max_new_tokens -= 1
 
-            if len(assistant_tokens) == 0 or (max_new_tokens == 0):
+            token: int = generated_token.cpu().item()
+            if (
+                (len(assistant_tokens) == 0 and token != 271)  # \\n=271 after <\think>
+                or (max_new_tokens == 0)
+                or (token == self.tokenizer.eos_token_id)
+            ):
                 pos_prob = token_distribution[:, pos_token_id].squeeze().cpu().item()
                 neg_prob = token_distribution[:, neg_token_id].squeeze().cpu().item()
-                token = generated_token.cpu().item()
+
+                if debug:
+                    print(f"\n\nTokens remained {max_new_tokens}")
+
                 return pos_prob, neg_prob, token
             else:
-                if (token := generated_token.cpu().item()) in assistant_tokens:
+                if token in assistant_tokens:
                     assistant_tokens.remove(token)
 
                 if debug:
